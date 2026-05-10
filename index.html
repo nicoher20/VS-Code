@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern, accessible task manager application with add, edit, and delete functionality">
+    <meta name="theme-color" content="#6366f1">
+    <title>Task Manager - Organize Your Tasks Efficiently</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main Application Container -->
+    <main class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-top">
+                <h1>My Tasks</h1>
+                <button 
+                    id="darkModeToggle" 
+                    class="dark-mode-toggle" 
+                    aria-label="Toggle dark mode"
+                    title="Toggle dark mode"
+                >
+                    <span class="toggle-icon" aria-hidden="true">🌙</span>
+                </button>
+            </div>
+            <p class="subtitle">Stay organized and productive</p>
+        </header>
+
+        <!-- Input and Filter Section -->
+        <section class="input-section" aria-labelledby="task-form-title">
+            <!-- Task Input Form -->
+            <form class="task-form" id="taskForm">
+                <h2 id="task-form-title" class="sr-only">Add a new task</h2>
+                <div class="input-wrapper">
+                    <input
+                        type="text"
+                        id="taskInput"
+                        class="task-input"
+                        placeholder="Add a new task..."
+                        aria-label="Enter a new task description"
+                        autocomplete="off"
+                        required
+                    >
+                    <button type="submit" class="add-btn" aria-label="Add task to the list">
+                        <span class="btn-text">Add Task</span>
+                        <span class="btn-icon" aria-hidden="true">+</span>
+                    </button>
+                </div>
+                <!-- Form validation error message -->
+                <p id="inputError" class="error-message" aria-live="polite" role="alert" hidden></p>
+            </form>
+
+            <!-- Task Filter Buttons -->
+            <fieldset class="filter-buttons-group">
+                <legend class="sr-only">Filter tasks by status</legend>
+                <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+                <button class="filter-btn" data-filter="active" aria-pressed="false">Active</button>
+                <button class="filter-btn" data-filter="completed" aria-pressed="false">Completed</button>
+            </fieldset>
+        </section>
+
+        <!-- Tasks Display Section -->
+        <section class="tasks-section" aria-labelledby="tasks-heading">
+            <h2 id="tasks-heading" class="sr-only">Task List</h2>
+            <!-- Task List Container -->
+            <ul id="taskList" class="task-list" aria-label="Your tasks">
+                <!-- Tasks will be dynamically inserted here by JavaScript -->
+            </ul>
+            <!-- Empty State Message -->
+            <div id="emptyState" class="empty-state" role="status" aria-live="polite">
+                <p class="empty-icon" aria-hidden="true">📝</p>
+                <p class="empty-text">No tasks yet. Add one to get started!</p>
+            </div>
+        </section>
+
+        <!-- Footer with Statistics and Controls -->
+        <footer class="footer">
+            <div class="task-stats" aria-live="polite">
+                <span id="totalTasks" class="stat">0 total</span>
+                <span class="stat-divider" aria-hidden="true">•</span>
+                <span id="completedTasks" class="stat">0 completed</span>
+            </div>
+            <button id="clearCompleted" class="clear-btn" aria-label="Delete all completed tasks">
+                Clear Completed
+            </button>
+        </footer>
+    </main>
+
+    <!-- JavaScript Application Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
